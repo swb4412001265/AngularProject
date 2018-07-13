@@ -1,3 +1,38 @@
+# Json Server
+
+Install
+$ npm install -g json-server
+Routes
+Based on the previous db.json file, here are all the default routes. You can also add other routes using --routes.
+
+Plural routes
+GET    /posts
+GET    /posts/1
+POST   /posts
+PUT    /posts/1
+PATCH  /posts/1
+DELETE /posts/1
+
+Create bd.jason like:
+{
+  "books": [
+    {
+      "id": "1",
+      "name": "A song of ice and fire",
+      "author": "George RR Martin"
+    },
+    {
+      "id": "2",
+      "name": "Harry Potter",
+      "author": "JK Rowling"
+    }
+}
+
+
+Then Run:
+json-server --watch db.json --port 4000
+
+
 # AngularTourOfHeroes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
