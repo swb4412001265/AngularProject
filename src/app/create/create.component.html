@@ -1,0 +1,42 @@
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Book ID</label>
+        <input type="text" class="form-control" formControlName="id" #id />
+      </div>
+      <div *ngIf="angForm.controls['id'].invalid && (angForm.controls['id'].dirty || angForm.controls['id'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['id'].errors.required">
+          ID is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Book Name</label>
+        <input type="text" class="form-control" formControlName="name" #name/>
+      </div>
+      <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['name'].errors.required">
+          Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Book Author</label>
+        <input type="text" class="form-control" formControlName="author" #author />
+      </div>
+      <div *ngIf="angForm.controls['author'].invalid && (angForm.controls['author'].dirty || angForm.controls['author'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['author'].errors.required">
+          Author is required.
+        </div>
+      </div>
+        <div class="form-group">
+          <button (click)="addBook(id.value, name.value, author.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+        </div>
+        <div *ngIf="message; else error" >
+          Response is ID:{{message.id}}, NAME:{{message.name}}, AUTHOR:{{message.author}}.
+        </div>
+       <ng-template #error>There is something wrong!</ng-template>
+      
+    </form>
+  </div>
+</div>
