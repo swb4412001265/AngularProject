@@ -13,6 +13,7 @@ export class EditComponent implements OnInit {
 
   book: any = {};
   angForm: FormGroup;
+  errorMSG: string;
   constructor(private route: ActivatedRoute, 
               private router: Router, 
               private service: AjaxService, 
@@ -32,6 +33,10 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe(params => {
     this.service.updateBook(params['id'], name, author);
     this.router.navigate(['index']);
+    },
+    (error)=>{
+      this.errorMSG = error;
+      console.log(this.errorMSG);
     });
     window.location.reload();
   }
