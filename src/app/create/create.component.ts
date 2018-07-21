@@ -13,6 +13,7 @@ export class CreateComponent implements OnInit {
   title = 'Add Book';
   angForm: FormGroup;
   message: Object;
+  errorMSG:string;
   constructor(private bookservice: AjaxService, private formbuilder: FormBuilder) {
     this.createForm();
    }
@@ -28,8 +29,15 @@ export class CreateComponent implements OnInit {
   addBook(id, name, author) {
     // this.message = []
     this.bookservice.addBook(id, name, author).subscribe(
-      message=> {this.message = message;
+      message=> {
+      this.errorMSG = "";
+      this.message = message;
       console.log(this.message);
+      },
+      (error)=>{
+        this.message = "";
+        this.errorMSG = error;
+        console.log(this.errorMSG);
       });
 }
 

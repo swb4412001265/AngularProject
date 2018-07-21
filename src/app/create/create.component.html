@@ -32,11 +32,13 @@
         <div class="form-group">
           <button (click)="addBook(id.value, name.value, author.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
         </div>
-        <div *ngIf="message; else error" >
+        <div *ngIf="message" >
           Response is ID:{{message.id}}, NAME:{{message.name}}, AUTHOR:{{message.author}}.
         </div>
-       <ng-template #error>There is something wrong!</ng-template>
-      
+        <div *ngIf="errorMSG" >
+          There is some issue: {{errorMSG.status}} <br />
+          {{errorMSG.statusText}}
+        </div>
     </form>
   </div>
 </div>
